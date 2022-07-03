@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH --job-name=distributed_2
+#SBATCH --time=00:30:00
+#SBATCH --mem=32G
+#SBATCH --ntasks=2
+#SBATCH --cpus-per-task=1
+#SBATCH --ntasks-per-node=2
+#SBATCH --account=fit3143
+#SBATCH --constraint=Xeon-Gold-6150
+#SBATCH --output=distributed_2.out
+module load openmpi/1.10.7-mlx
+
+echo "distributed : 2 cores"
+
+echo "Run 1"
+srun mandelbrot_distributed
+
+echo "Run 2"
+srun mandelbrot_distributed
+
+echo "Run 3"
+srun mandelbrot_distributed
+
+echo "Run 4"
+srun mandelbrot_distributed
+
+echo "Run 5"
+srun mandelbrot_distributed
+
